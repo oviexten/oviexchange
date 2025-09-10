@@ -86,9 +86,10 @@
       <a href="#" onclick="showSection('portfolio')">Portfolio</a>
       <a href="#" onclick="showSection('history')">History</a>
       <a href="#" onclick="showSection('about')">About</a>
-         <a href="#" onclick="showSection('contact')">Contact</a>
+      <a href="#" onclick="showSection('contact')">Contact</a>
     </nav>
-  </header> 
+  </header>
+
   <main>
     <!-- Login -->
     <section id="login" class="active">
@@ -202,6 +203,7 @@
       </div>
     </section>
   </main>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // Navigation
@@ -223,16 +225,16 @@
       const data = await res.json();
 
       // Update Dashboard
-      document.getElementById("btcPrice").textContent = $${data.bitcoin.usd.toLocaleString()};
-      document.getElementById("ethPrice").textContent = $${data.ethereum.usd.toLocaleString()};
+      document.getElementById("btcPrice").textContent = `$${data.bitcoin.usd.toLocaleString()}`;
+      document.getElementById("ethPrice").textContent = `$${data.ethereum.usd.toLocaleString()}`;
 
       // Update Portfolio
-      document.getElementById("btcHoldings").textContent = $${(1.25 * data.bitcoin.usd).toLocaleString()};
-      document.getElementById("ethHoldings").textContent = $${(10 * data.ethereum.usd).toLocaleString()};
+      document.getElementById("btcHoldings").textContent = `$${(1.25 * data.bitcoin.usd).toLocaleString()}`;
+      document.getElementById("ethHoldings").textContent = `$${(10 * data.ethereum.usd).toLocaleString()}`;
 
       // Update Total Balance
       const total = (1.25 * data.bitcoin.usd) + (10 * data.ethereum.usd);
-      document.getElementById("totalBalance").textContent = $${total.toLocaleString()};
+      document.getElementById("totalBalance").textContent = `$${total.toLocaleString()}`;
 
       // Update Chart
       const now = new Date().toLocaleTimeString();
@@ -246,12 +248,12 @@
 
       // Update Markets Table
       const marketTable = document.getElementById("marketTable");
-      marketTable.innerHTML = 
+      marketTable.innerHTML = `
         <tr><td>Bitcoin (BTC)</td><td>$${data.bitcoin.usd.toLocaleString()}</td></tr>
         <tr><td>Ethereum (ETH)</td><td>$${data.ethereum.usd.toLocaleString()}</td></tr>
         <tr><td>Cardano (ADA)</td><td>$${data.cardano.usd.toLocaleString()}</td></tr>
         <tr><td>Solana (SOL)</td><td>$${data.solana.usd.toLocaleString()}</td></tr>
-      ;
+      `;
     }
 
     setInterval(fetchPrices, 10000);
@@ -264,9 +266,9 @@
       const amount = document.getElementById("amount").value;
       const type = document.getElementById("type").value;
       const date = new Date().toISOString().split("T")[0];
-      const row = <tr><td>${date}</td><td>${crypto}</td><td>${type}</td><td>$${amount}</td><td>Completed</td></tr>;
+      const row = `<tr><td>${date}</td><td>${crypto}</td><td>${type}</td><td>$${amount}</td><td>Completed</td></tr>`;
       document.getElementById("historyTable").innerHTML += row;
-      alert(${type.toUpperCase()} order placed: $${amount} of ${crypto});
+      alert(`${type.toUpperCase()} order placed: $${amount} of ${crypto}`);
     }
 
     // Contact form
@@ -298,7 +300,3 @@
   </script>
 </body>
 </html>
-      
-    </nav>
-  </header>
-  
